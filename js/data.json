@@ -1,0 +1,362 @@
+[
+  {
+    "Date": 1066,
+    "Event": "Norman Conquest of Britain"
+  },
+  {
+    "Date": 1095,
+    "Event": "Pope Urban II calls for the Crusades"
+  },
+  {
+    "Date": 1100,
+    "Event": "Angkor Wat is built"
+  },
+  {
+    "Date": 1206,
+    "Event": "Genghis Khan begins creation of largest land empire in history"
+  },
+  {
+    "Date": 1215,
+    "Event": "Magna Carta signed"
+  },
+  {
+    "Date": 1260,
+    "Event": "Chartres Cathedral consecrated"
+  },
+  {
+    "Date": 1271,
+    "Event": "Marco Polo begins travels to Asia"
+  },
+  {
+    "Date": 1273,
+    "Event": "Thomas Aquinas's Summa theologica"
+  },
+  {
+    "Date": 1300,
+    "Event": "Renaissance begins in Italy"
+  },
+  {
+    "Date": 1347,
+    "Event": "Bubonic plague (Black Death) spreads in Europe"
+  },
+  {
+    "Date": 1387,
+    "Event": "Chaucer's Canterbury Tales"
+  },
+  {
+    "Date": 1399,
+    "Event": "Tamerlane begins last great conquest"
+  },
+  {
+    "Date": 1438,
+    "Event": "Incan Empire formed in Peru"
+  },
+  {
+    "Date": 1455,
+    "Event": "Gutenberg's movable-type printing press produces the Bible"
+  },
+  {
+    "Date": 1492,
+    "Event": "Columbus reaches the New World"
+  },
+  {
+    "Date": 1509,
+    "Event": "Michelangelo begins painting Sistine Chapel"
+  },
+  {
+    "Date": 1513,
+    "Event": "Machiavelli's The Prince"
+  },
+  {
+    "Date": 1517,
+    "Event": "Martin Luther initiates Reformation"
+  },
+  {
+    "Date": 1519,
+    "Event": "Aztec Empire at height as Spanish arrive"
+  },
+  {
+    "Date": 1520,
+    "Event": "Suleiman I ���the Magnificent��� presides over the Ottoman Empire's greatest period"
+  },
+  {
+    "Date": 1522,
+    "Event": "Magellan's expedition circumnavigates the globe"
+  },
+  {
+    "Date": 1543,
+    "Event": "Copernicus postulates a heliocentric universe"
+  },
+  {
+    "Date": 1582,
+    "Event": "Pope Gregory XIII reforms calendar"
+  },
+  {
+    "Date": 1603,
+    "Event": "Shakespeare's Hamlet"
+  },
+  {
+    "Date": 1605,
+    "Event": "Cervantes's Don Quixote, first modern novel"
+  },
+  {
+    "Date": 1609,
+    "Event": "Galileo makes first astronomical observations with a telescope"
+  },
+  {
+    "Date": 1637,
+    "Event": "Descartes publishes Discours de la m��thode"
+  },
+  {
+    "Date": 1643,
+    "Event": "Taj Mahal completed"
+  },
+  {
+    "Date": 1664,
+    "Event": "Newton's theory of universal gravitation"
+  },
+  {
+    "Date": 1667,
+    "Event": "Milton's Paradise Lost"
+  },
+  {
+    "Date": 1684,
+    "Event": "Leibniz's calculus published"
+  },
+  {
+    "Date": 1690,
+    "Event": "Locke's Essay Concerning Human Understanding"
+  },
+  {
+    "Date": 1721,
+    "Event": "Bach completes the Brandenburg Concertos"
+  },
+  {
+    "Date": 1755,
+    "Event": "Johnson's Dictionary of the English Language"
+  },
+  {
+    "Date": 1760,
+    "Event": "Industrial Revolution begins in England"
+  },
+  {
+    "Date": 1762,
+    "Event": "Rousseau's The Social Contract"
+  },
+  {
+    "Date": 1764,
+    "Event": "Mozart (aged eight) writes first symphony"
+  },
+  {
+    "Date": 1769,
+    "Event": "Watt patents first practical steam engine"
+  },
+  {
+    "Date": 1776,
+    "Event": "U.S. Declaration of Independence; Adam Smith's Wealth of Nations"
+  },
+  {
+    "Date": 1787,
+    "Event": "U.S. Constitution signed"
+  },
+  {
+    "Date": 1789,
+    "Event": "French Revolution begins"
+  },
+  {
+    "Date": 1792,
+    "Event": "Wollstonecraft's Vindication of the Rights of Woman"
+  },
+  {
+    "Date": 1796,
+    "Event": "Jenner discovers smallpox vaccine"
+  },
+  {
+    "Date": 1808,
+    "Event": "Beethoven's Fifth Symphony"
+  },
+  {
+    "Date": 1815,
+    "Event": "Battle of Waterloo crushes Napoleon"
+  },
+  {
+    "Date": 1819,
+    "Event": "Bol�_var defeats Spanish forces at Boyac��"
+  },
+  {
+    "Date": 1826,
+    "Event": "Niepce takes first photograph"
+  },
+  {
+    "Date": 1833,
+    "Event": "Slavery abolished in British Empire"
+  },
+  {
+    "Date": 1842,
+    "Event": "Long uses first anesthetic (ether)"
+  },
+  {
+    "Date": 1859,
+    "Event": "Darwin's On the Origin of Species; Lenoir builds first practical internal-combustion engine"
+  },
+  {
+    "Date": 1862,
+    "Event": "Pasteur's experiments lead to germ theory; Salon des Refus��s introduces impressionism"
+  },
+  {
+    "Date": 1867,
+    "Event": "Japan ends 675-year shogun rule"
+  },
+  {
+    "Date": 1876,
+    "Event": "Bell patents the telephone"
+  },
+  {
+    "Date": 1879,
+    "Event": "Edison invents electric light"
+  },
+  {
+    "Date": 1880,
+    "Event": "Europe colonizes African continent"
+  },
+  {
+    "Date": 1885,
+    "Event": "World's first skyscraper built in Chicago"
+  },
+  {
+    "Date": 1893,
+    "Event": "New Zealand becomes first country in the world to grant women the vote"
+  },
+  {
+    "Date": 1895,
+    "Event": "Lumi��re brothers introduce motion pictures; Marconi sends first radio signals"
+  },
+  {
+    "Date": 1897,
+    "Event": "Herzl launches Zionist movement"
+  },
+  {
+    "Date": 1900,
+    "Event": "Freud's Interpretation of Dreams"
+  },
+  {
+    "Date": 1903,
+    "Event": "Wright brothers fly first motorized airplane"
+  },
+  {
+    "Date": 1905,
+    "Event": "Einstein announces theory of relativity"
+  },
+  {
+    "Date": 1907,
+    "Event": "Picasso's Les Demoiselles d'Avignon introduces cubism"
+  },
+  {
+    "Date": 1911,
+    "Event": "Rutherford discovers structure of atom"
+  },
+  {
+    "Date": 1913,
+    "Event": "Ford develops first moving assembly line"
+  },
+  {
+    "Date": 1914,
+    "Event": "World War I begins"
+  },
+  {
+    "Date": 1916,
+    "Event": "Sanger founds international birth control movement"
+  },
+  {
+    "Date": 1917,
+    "Event": "Lenin leads the Bolshevik Revolution"
+  },
+  {
+    "Date": 1918,
+    "Event": "Global ���Spanish flu��� epidemic"
+  },
+  {
+    "Date": 1922,
+    "Event": "Joyce's Ulysses published"
+  },
+  {
+    "Date": 1927,
+    "Event": "Farnsworth demonstrates working model of a television; Lemaitre proposes big bang theory"
+  },
+  {
+    "Date": 1928,
+    "Event": "Fleming discovers penicillin"
+  },
+  {
+    "Date": 1929,
+    "Event": "Hubble proposes theory of expanding universe; U.S. stock market crash precipitates global depression"
+  },
+  {
+    "Date": 1936,
+    "Event": "Keynes's The General Theory of Employment, Interest, and Money"
+  },
+  {
+    "Date": 1939,
+    "Event": "Hitler invades Poland; World War II begins"
+  },
+  {
+    "Date": 1942,
+    "Event": "Nazi leaders at Wannsee Conference coordinate ���final solution to the Jewish question���"
+  },
+  {
+    "Date": 1945,
+    "Event": "Atomic bombs are dropped on Hiroshima and Nagasaki; first electronic computer, ENIAC, is built; Arab League launches modern pan-Arabism"
+  },
+  {
+    "Date": 1946,
+    "Event": "First meeting of U.N. General Assembly; Churchill's ���Iron Curtain��� speech marks beginning of cold war"
+  },
+  {
+    "Date": 1947,
+    "Event": "Gandhi's civil disobedience movement leads to an independent India"
+  },
+  {
+    "Date": 1949,
+    "Event": "Communist victory in China under Mao Zedong"
+  },
+  {
+    "Date": 1950,
+    "Event": "Abstract expressionism introduced"
+  },
+  {
+    "Date": 1953,
+    "Event": "Watson, Crick, and Franklin discover DNA's structure"
+  },
+  {
+    "Date": 1954,
+    "Event": "Brown v. Board of Education begins unraveling of U.S. racial segregation"
+  },
+  {
+    "Date": 1957,
+    "Event": "Russia launches first satellite, Sputnik I"
+  },
+  {
+    "Date": 1959,
+    "Event": "Mary and Louis Leakey uncover hominid fossils"
+  },
+  {
+    "Date": 1969,
+    "Event": "Armstrong and Aldrin walk on the Moon; Internet (ARPA) goes online"
+  },
+  {
+    "Date": 1980,
+    "Event": "Smallpox eradicated"
+  },
+  {
+    "Date": 1981,
+    "Event": "Scientists identify AIDS"
+  },
+  {
+    "Date": 1989,
+    "Event": "Fall of Communism in Eastern Europe"
+  },
+  {
+    "Date": 1991,
+    "Event": "Breakup of Soviet Union; apartheid ends in South Africa"
+  }
+]

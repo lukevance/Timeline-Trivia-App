@@ -1,0 +1,48 @@
+/* As hex codes */
+
+.color-primary-0 { color: #426B8B }	/* Main Primary color */
+.color-primary-1 { color: #9FBACE }
+.color-primary-2 { color: #688BA6 }
+.color-primary-3 { color: #275374 }
+.color-primary-4 { color: #113856 }
+
+body {
+  height: 100%;
+  min-height: 100%;
+  background-color: #426B8B;
+  color: #e1e2e2;
+}
+header {
+  text-align: center;
+  margin-top: 2em;
+}
+h2  {
+  text-align: center;
+}
+
+.optA, .optB {
+  text-align: center;
+  margin-top: 3em;
+  min-height: 15rem;
+  padding: 5em;
+  cursor: pointer;
+}
+.optA {
+  background-color: #9FBACE;
+  opacity: 0.7;
+}
+
+.optB {
+  background-color: #113856;
+  opacity: 0.7;
+}
+.optA:hover {
+  opacity: 1;
+}
+.optB:hover{
+  opacity: 1;
+}
+
+.optA p, .optB p{
+  font-size: 18pt;
+}
