@@ -15,17 +15,26 @@ body {
 header {
   text-align: center;
   margin-top: 2em;
+  margin-bottom: 2em;
 }
 h2  {
   text-align: center;
 }
 
+.row {
+  margin-top: 1.5em;
+}
+.menu div {
+  float: left;
+  margin-left: 3em;
+}
+
 .optA, .optB {
   text-align: center;
-  margin-top: 3em;
-  min-height: 15rem;
-  padding: 5em;
-  cursor: pointer;
+  min-height: 15em;
+  padding: 3em;
+  font-size: 22pt;
+
 }
 .optA {
   background-color: #9FBACE;
@@ -36,13 +45,17 @@ h2  {
   background-color: #113856;
   opacity: 0.7;
 }
-.optA:hover {
+
+#play {
+  text-align: center;
+  background-color: #275374;
+  padding: 0 .8em .8em .8em;
+  border-radius: 10%;
+  cursor: pointer;
   opacity: 1;
-}
-.optB:hover{
-  opacity: 1;
+  border: solid #c5e0f5 0;
 }
 
-.optA p, .optB p{
-  font-size: 18pt;
+#play:hover {
+  opacity: 0.7;
 }
