@@ -130,14 +130,14 @@ window.onload = function (){
 
       // activate hover and pointer for answers
       $('.optA').hover(function(){
-        $(this).css({opacity: '1', cursor: 'pointer'});
+        $(this).css({opacity: '0.8', cursor: 'pointer'});
       }, function(){
-        $(this).css({opacity: '0.7'});
+        $(this).css({opacity: '1'});
       });
       $('.optB').hover(function(){
-        $(this).css({opacity: '1', cursor: 'pointer'});
+        $(this).css({opacity: '0.8', cursor: 'pointer'});
       }, function(){
-        $(this).css({opacity: '0.7'});
+        $(this).css({opacity: '1'});
       });
 
       // reset colors of answers and result message
@@ -235,6 +235,12 @@ window.onload = function (){
       // after question is answered prep next question or lose
       function prepNext (){
         if (lives === 0){
+          $('#play').animate({
+            borderWidth: '15px'
+          }, 100);
+          $('#play').animate({
+            borderWidth: '2px'
+          }, 500);
           var over = function (){
             $('.optA').off('click');
             $('.optB').off('click');
@@ -242,20 +248,15 @@ window.onload = function (){
             $('.optB').off('mouseenter mouseleave');
             $('.optA').css({cursor: 'default', opacity: '1'});
             $('.optB').css({cursor: 'default', opacity: '1'});
-            $('#play').html('<h2>Try Again</h2>');
+            $('#play').html('<h2>NEW GAME</h2>');
+            $('.noTimemsg').remove();
             $('.gamePlay').css({display: 'none'});
             $('.postGame').css({display: 'block'});
-            $('#play').animate({
-              borderWidth: '15px'
-            }, 100);
-            $('#play').animate({
-              borderWidth: '2px'
-            }, 500);
             playBtn.click(function (){
               location.reload();
             });
           };
-          window.setTimeout(over, 600);
+          window.setTimeout(over, 2000);
         } else {
           $('.optA').off('click');
           $('.optB').off('click');

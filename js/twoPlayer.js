@@ -325,16 +325,37 @@ window.onload = function (){
 
       // after question is answered prep next question or lose
       function prepNext (){
+        // set global variables
+        var winner;
+        var finalScore;
+        var notes;
         // check if either player has lost
         if (playerOneLives === 0){
           console.log('Player One, you lose');
+          winner = 'Player Two';
+          finalScore = playerTwoScore + ' - ' + playerOneScore;
+          notes = ' By not being wrong all the time.';
+          gameOver(winner, finalScore, notes);
+
         } else if (playerTwoLives === 0){
           console.log('Player Two, you lose');
+          winner = 'Player One';
+          finalScore = playerOneScore + ' - ' + playerTwoScore;
+          notes = ' By not being wrong all the time.';
+          gameOver(winner, finalScore, notes);
+
         // check if either player has won
         } else if (playerOneScore === win) {
           console.log('Player One, you win!');
+          winner = 'Player One';
+          finalScore = playerOneScore + ' - ' + playerTwoScore;
+          gameOver(winner, finalScore);
         } else if (playerTwoScore === win) {
           console.log('Player Two, you win!');
+          winner = 'Player Two';
+          finalScore = playerTwoScore + ' - ' + playerOneScore;
+          gameOver(winner, finalScore);
+          // if game is not over, setup next question
         } else {
           $(document).off('keydown');
           $('#play').html('<h2>NEXT</h2>');
@@ -349,9 +370,10 @@ window.onload = function (){
       }
 
       // define function for gameover screen
-      function gameOver() {
-        
-        $('#play').html('<h2>Try Again</h2>');
+      function gameOver(winner, score, note) {
+        $('#gameOverMessage').html(winner + ' wins!' + note);
+        $('#finalScoreMessage').html(score);
+        $('#play').html('<h2>NEW GAME</h2>');
         $('.gamePlay').css({display: 'none'});
         $('.postGame').css({display: 'block'});
 

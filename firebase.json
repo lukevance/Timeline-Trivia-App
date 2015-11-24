@@ -1,0 +1,9 @@
+{
+  "firebase": "timeline-trivia-app",
+  "public": ".",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ]
+}
