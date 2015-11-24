@@ -65,31 +65,99 @@ window.onload = function (){
   // var zone1 = $('.optA').html();
   var playBtn = $('#play');
 
+  // set initial time for timer
+  var timeLeft = 10;
+  // set timer to initial time
+  $('#time').html(timeLeft);
+
+  // set goal score to play to
+  var win = 5;
+
   // on click PLAY initiate gameplay ----------------- BEGIN GAME-----------
   playBtn.click(function start(event){
+
+    // timer function countdown from input time
+    function timer(arg){
+      var nIntervId;
+      var count = arg;
+
+        function changeText() {
+          nIntervId = setInterval(updateText, 1000);
+        }
+
+        function updateText() {
+          if (count > -1) {
+            $('#time').html(count);
+            console.log(count);
+            count--;
+          } else {
+            console.log('You Lose');
+            stopTimer();
+            outOfTime();
+          }
+        }
+
+        function stopTimer() {
+          clearInterval(nIntervId);
+        }
+        // changeText();
+
+        return {
+          startTimer:changeText,
+          stopTimer:stopTimer
+        };
+     }
+
+     // create message for out of time
+     var $noTime = $( "<p class='noTimemsg'>Sorry, out of time.</p>" );
+     $noTime.css({fontSize: '28pt'});
+
+     // if timer runs out, run this function
+     function outOfTime(){
+       playerOneLives--;
+       playerTwoLives--;
+       updateLives();
+       // save the question data for return later
+       wrongAnswered.push(questionData[0]);
+       wrongAnswered.push(questionData[1]);
+       // display failure visuals and message
+       if (questionData[0].Date < questionData[1].Date){
+         $('.optA').css({backgroundColor: "rgb(105, 143, 90)"});
+         $('.optB').css({backgroundColor: "rgb(176, 73, 67)"});
+       } else {
+         $('.optA').css({backgroundColor: "rgb(176, 73, 67)"});
+         $('.optB').css({backgroundColor: "rgb(105, 143, 90)"});
+       }
+       $('.timeAlert').css({display: 'block'});
+       $('.timeAlert').append($noTime);
+       prepNext();
+     }
+
+      // creates timer object which with start and stop elements
+      var myTimer = timer(timeLeft);
+      // calls functions within timer object
+      myTimer.startTimer();
 
       // turn off play button till question is answered
       playBtn.off('click');
       // disable playbtn hover while question is being answered.
 
 
-      // activate hover and pointer for answers
-      $('.optA').hover(function(){
-        $(this).css({opacity: '1', cursor: 'pointer'});
-      }, function(){
-        $(this).css({opacity: '0.7'});
-      });
-      $('.optB').hover(function(){
-        $(this).css({opacity: '1', cursor: 'pointer'});
-      }, function(){
-        $(this).css({opacity: '0.7'});
-      });
+      // activate full color answers
+      $('.optA').css({opacity: '1'});
+      $('.optB').css({opacity: '1'});
+
 
       // reset colors of answers and result message
       $('.optA').css({backgroundColor: "#9FBACE"});
-      // $(this).append($goodAns);
       $('.optB').css({backgroundColor: "#113856"});
-      // $(this).append($goodAns);
+      $('.timeAlert').css({display: 'none'});
+      $('.noTimemsg').remove();
+      // reset player score/life colors
+      $('.scoreKeeper1').css({backgroundColor: "transparent"});
+      $('.scoreKeeper2').css({backgroundColor: "transparent"});
+      $('.lives1').css({backgroundColor: "transparent"});
+      $('.lives2').css({backgroundColor: "transparent"});
 
 
       // get correct amount of random questions
@@ -112,9 +180,9 @@ window.onload = function (){
 
       // create messages to be displayed
       var $goodAns = $( "<p class='message'>Nice Job!</p>" );
-      $goodAns.css({fontSize: '32pt', marginTop: '1.5em'});
+      $goodAns.css({fontSize: '28pt', marginTop: '1.5em'});
       var $badAns = $( "<p class='message'>Nope. Not even close.</p>" );
-      $badAns.css({fontSize: '28pt', marginTop: '2.5em'});
+      $badAns.css({fontSize: '24pt', marginTop: '2.5em'});
 
 
 
@@ -141,6 +209,7 @@ window.onload = function (){
 
       // on z-press check zoneA if year is smaller
       function plyOneZoneA(event){
+        myTimer.stopTimer();
         if (questionData[0].Date < questionData[1].Date){
           playerOneScore++;
           updateScore();
@@ -151,6 +220,7 @@ window.onload = function (){
           // display success visuals and message
           $('.optA').css({backgroundColor: "rgb(105, 143, 90)"});
           $('.optA').append($goodAns);
+          $('.scoreKeeper1').css({backgroundColor: "rgb(105, 143, 90)", borderRadius: "10px"});
           prepNext();
         } else {
           playerOneLives--;
@@ -160,6 +230,7 @@ window.onload = function (){
           // display failure visuals and message
           $('.optA').css({backgroundColor: "rgb(176, 73, 67)"});
           $('.optA').append($badAns);
+          $('.lives1').css({backgroundColor: "rgb(176, 73, 67)", borderRadius: "10px"});
           prepNext();
           // reset vars and show start over button - refreshes page.
         }
@@ -167,6 +238,7 @@ window.onload = function (){
 
       // on x-press check zoneB if year is smaller
       function plyOneZoneB (event){
+        myTimer.stopTimer();
         if (questionData[1].Date < questionData[0].Date){
           playerOneScore++;
           updateScore();
@@ -177,6 +249,7 @@ window.onload = function (){
           // display success visuals and message
           $('.optB').css({backgroundColor: "rgb(105, 143, 90)"});
           $('.optB').append($goodAns);
+          $('.scoreKeeper1').css({backgroundColor: "rgb(105, 143, 90)", borderRadius: "10px"});
           prepNext();
         } else {
           playerOneLives--;
@@ -186,6 +259,7 @@ window.onload = function (){
           // display failure visuals and message
           $('.optB').css({backgroundColor: "rgb(176, 73, 67)"});
           $('.optB').append($badAns);
+          $('.lives1').css({backgroundColor: "rgb(176, 73, 67)", borderRadius: "10px"});
           prepNext();
           // reset vars and show start over button - refreshes page.
           }
@@ -193,6 +267,7 @@ window.onload = function (){
 
       // on .-press check zoneA if year is smaller
       function plyTwoZoneA (event){
+        myTimer.stopTimer();
         if (questionData[0].Date < questionData[1].Date){
           playerTwoScore++;
           updateScore();
@@ -203,6 +278,7 @@ window.onload = function (){
           // display success visuals and message
           $('.optA').css({backgroundColor: "rgb(105, 143, 90)"});
           $('.optA').append($goodAns);
+          $('.scoreKeeper2').css({backgroundColor: "rgb(105, 143, 90)", borderRadius: "10px"});
           prepNext();
         } else {
           playerTwoLives--;
@@ -212,6 +288,7 @@ window.onload = function (){
           // display failure visuals and message
           $('.optA').css({backgroundColor: "rgb(176, 73, 67)"});
           $('.optA').append($badAns);
+          $('.lives2').css({backgroundColor: "rgb(176, 73, 67)", borderRadius: "10px"});
           prepNext();
           // reset vars and show start over button - refreshes page.
         }
@@ -219,6 +296,7 @@ window.onload = function (){
 
       // on /-press check zoneB if year is smaller
       function plyTwoZoneB (event){
+        myTimer.stopTimer();
         if (questionData[1].Date < questionData[0].Date){
           playerTwoScore++;
           updateScore();
@@ -229,6 +307,7 @@ window.onload = function (){
           // display success visuals and message
           $('.optB').css({backgroundColor: "rgb(105, 143, 90)"});
           $('.optB').append($goodAns);
+          $('.scoreKeeper2').css({backgroundColor: "rgb(105, 143, 90)", borderRadius: "10px"});
           prepNext();
         } else {
           playerTwoLives--;
@@ -238,6 +317,7 @@ window.onload = function (){
           // display failure visuals and message
           $('.optB').css({backgroundColor: "rgb(176, 73, 67)"});
           $('.optB').append($badAns);
+          $('.lives2').css({backgroundColor: "rgb(176, 73, 67)", borderRadius: "10px"});
           prepNext();
           // reset vars and show start over button - refreshes page.
           }
@@ -257,10 +337,6 @@ window.onload = function (){
           console.log('Player Two, you win!');
         } else {
           $(document).off('keydown');
-          $('.optA').off('mouseenter mouseleave');
-          $('.optB').off('mouseenter mouseleave');
-          $('.optA').css({cursor: 'default', opacity: '1'});
-          $('.optB').css({cursor: 'default', opacity: '1'});
           $('#play').html('<h2>NEXT</h2>');
           $('#play').animate({
             borderWidth: '15px'
@@ -270,6 +346,24 @@ window.onload = function (){
           }, 500);
           playBtn.click(start);
         }
+      }
+
+      // define function for gameover screen
+      function gameOver() {
+        
+        $('#play').html('<h2>Try Again</h2>');
+        $('.gamePlay').css({display: 'none'});
+        $('.postGame').css({display: 'block'});
+
+        $('#play').animate({
+          borderWidth: '15px'
+        }, 100);
+        $('#play').animate({
+          borderWidth: '2px'
+        }, 500);
+        playBtn.click(function (){
+          location.reload();
+        });
       }
 
     });

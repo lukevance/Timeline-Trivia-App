@@ -58,6 +58,11 @@ window.onload = function (){
   // var zone1 = $('.optA').html();
   var playBtn = $('#play');
 
+  // set initial time for timer
+  var timeLeft = 15;
+  // set timer to initial time
+  $('#time').html(timeLeft);
+
   // on click PLAY initiate gameplay ----------------- BEGIN GAME-----------
   playBtn.click(function start(event){
 
@@ -78,14 +83,19 @@ window.onload = function (){
           } else {
             console.log('You Lose');
             stopTimer();
+            outOfTime();
           }
         }
 
         function stopTimer() {
           clearInterval(nIntervId);
-          outOfTime();
         }
-        changeText();
+        // changeText();
+
+        return {
+          startTimer:changeText,
+          stopTimer:stopTimer
+        };
      }
 
      // create message for out of time
@@ -96,6 +106,7 @@ window.onload = function (){
      function outOfTime(){
        lives--;
        updateLives();
+       timeLeft -= 5;
        // save the question data for return later
        wrongAnswered.push(questionData[0]);
        wrongAnswered.push(questionData[1]);
@@ -107,9 +118,10 @@ window.onload = function (){
        prepNext();
      }
 
-      // set initial time for timer and start countdown
-      var onClock = 5;
-      timer(onClock);
+      // creates timer object which with start and stop elements
+      var myTimer = timer(timeLeft);
+      // calls functions within timer object
+      myTimer.startTimer();
 
       // turn off play button till question is answered
       playBtn.off('click');
@@ -166,6 +178,7 @@ window.onload = function (){
 
       // on click of zone check if year is smaller
       $('.optA').click(function(event){
+        myTimer.stopTimer();
         if (questionData[0].Date < questionData[1].Date){
           score++;
           updateScore();
@@ -180,6 +193,7 @@ window.onload = function (){
         } else {
           lives--;
           updateLives();
+          timeLeft -= 5;
           // save the question data for return later
           wrongAnswered.push(questionData[0]);
           // display failure visuals and message
@@ -192,6 +206,7 @@ window.onload = function (){
       });
       // on click of zone check if year is smaller
       $('.optB').click(function(event){
+        myTimer.stopTimer();
         if (questionData[1].Date < questionData[0].Date){
           score++;
           updateScore();
@@ -206,6 +221,7 @@ window.onload = function (){
         } else {
           lives--;
           updateLives();
+          timeLeft -= 5;
           // save the question data for return later
           wrongAnswered.push(questionData[1]);
           // display failure visuals and message
@@ -219,18 +235,27 @@ window.onload = function (){
       // after question is answered prep next question or lose
       function prepNext (){
         if (lives === 0){
-          $('.optA').off('click');
-          $('.optB').off('click');
-          $('.optA').off('mouseenter mouseleave');
-          $('.optB').off('mouseenter mouseleave');
-          $('.optA').css({cursor: 'default', opacity: '1'});
-          $('.optB').css({cursor: 'default', opacity: '1'});
-          $('#play').html('<h2>Try Again</h2>');
-          $('.gamePlay').css({display: 'none'});
-          $('.postGame').css({display: 'block'});
-          playBtn.click(function (){
-            location.reload();
-          });
+          var over = function (){
+            $('.optA').off('click');
+            $('.optB').off('click');
+            $('.optA').off('mouseenter mouseleave');
+            $('.optB').off('mouseenter mouseleave');
+            $('.optA').css({cursor: 'default', opacity: '1'});
+            $('.optB').css({cursor: 'default', opacity: '1'});
+            $('#play').html('<h2>Try Again</h2>');
+            $('.gamePlay').css({display: 'none'});
+            $('.postGame').css({display: 'block'});
+            $('#play').animate({
+              borderWidth: '15px'
+            }, 100);
+            $('#play').animate({
+              borderWidth: '2px'
+            }, 500);
+            playBtn.click(function (){
+              location.reload();
+            });
+          };
+          window.setTimeout(over, 600);
         } else {
           $('.optA').off('click');
           $('.optB').off('click');
