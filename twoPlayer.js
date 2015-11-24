@@ -61,56 +61,6 @@ window.onload = function (){
   // on click PLAY initiate gameplay ----------------- BEGIN GAME-----------
   playBtn.click(function start(event){
 
-    // timer function countdown from input time
-    function timer(arg){
-      var nIntervId;
-      var count = arg;
-
-        function changeText() {
-          nIntervId = setInterval(updateText, 1000);
-        }
-
-        function updateText() {
-          if (count > -1) {
-            $('#time').html(count);
-            console.log(count);
-            count--;
-          } else {
-            console.log('You Lose');
-            stopTimer();
-          }
-        }
-
-        function stopTimer() {
-          clearInterval(nIntervId);
-          outOfTime();
-        }
-        changeText();
-     }
-
-     // create message for out of time
-     var $noTime = $( "<p class='noTimemsg'>Sorry, out of time.</p>" );
-     $noTime.css({fontSize: '28pt'});
-
-     // if timer runs out, run this function
-     function outOfTime(){
-       lives--;
-       updateLives();
-       // save the question data for return later
-       wrongAnswered.push(questionData[0]);
-       wrongAnswered.push(questionData[1]);
-       // display failure visuals and message
-       $('.optA').css({backgroundColor: "rgb(176, 73, 67)"});
-       $('.optB').css({backgroundColor: "rgb(176, 73, 67)"});
-       $('.timeAlert').css({display: 'block'});
-       $('.timeAlert').append($noTime);
-       prepNext();
-     }
-
-      // set initial time for timer and start countdown
-      var onClock = 5;
-      timer(onClock);
-
       // turn off play button till question is answered
       playBtn.off('click');
       // disable playbtn hover while question is being answered.
@@ -130,16 +80,9 @@ window.onload = function (){
 
       // reset colors of answers and result message
       $('.optA').css({backgroundColor: "#9FBACE"});
-      // $(this).append($goodAns);
+      $(this).append($goodAns);
       $('.optB').css({backgroundColor: "#113856"});
-      // $(this).append($goodAns);
-      $('.timeAlert').css({display: 'none'});
-      $('.noTimemsg').remove();
-
-
-      // set stage if previous game was Lost
-      $('.gamePlay').css({display: 'block'});
-      $('.postGame').css({display: 'none'});
+      $(this).append($goodAns);
 
 
       // get correct amount of random questions
@@ -151,6 +94,8 @@ window.onload = function (){
       for (var j = 0; j < questionIDs.length; j++){
         questionData.push(questBank[questionIDs[j]]);
       }
+      // store curret question IDs for removal if answer is correct
+      // var questIdOne =
 
       // fill zones with event data from question data
       $('.optA').html(questionData[0].Event);
@@ -219,18 +164,7 @@ window.onload = function (){
       // after question is answered prep next question or lose
       function prepNext (){
         if (lives === 0){
-          $('.optA').off('click');
-          $('.optB').off('click');
-          $('.optA').off('mouseenter mouseleave');
-          $('.optB').off('mouseenter mouseleave');
-          $('.optA').css({cursor: 'default', opacity: '1'});
-          $('.optB').css({cursor: 'default', opacity: '1'});
-          $('#play').html('<h2>Try Again</h2>');
-          $('.gamePlay').css({display: 'none'});
-          $('.postGame').css({display: 'block'});
-          playBtn.click(function (){
-            location.reload();
-          });
+          console.log('you lose');
         } else {
           $('.optA').off('click');
           $('.optB').off('click');
@@ -248,7 +182,6 @@ window.onload = function (){
           playBtn.click(start);
         }
       }
-
 
     });
   });

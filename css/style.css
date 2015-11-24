@@ -29,6 +29,10 @@ h2  {
   margin-left: 3em;
 }
 
+.timeAlert {
+  text-align: center;
+}
+
 .optA, .optB {
   text-align: center;
   min-height: 15em;
@@ -44,6 +48,22 @@ h2  {
 .optB {
   background-color: #113856;
   opacity: 0.7;
+}
+
+.post {
+  text-align: center;
+  min-height: 15em;
+  padding: 3em;
+  font-size: 22pt;
+  background-color: #9FBACE;
+}
+
+.post h2 {
+  font-size: 28pt;
+}
+
+.postGame {
+  display: none;
 }
 
 #play {
