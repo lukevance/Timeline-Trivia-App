@@ -36,9 +36,9 @@ h2  {
 .optA, .optB {
   text-align: center;
   min-height: 15em;
-  padding: 3em;
-  font-size: 22pt;
-
+  padding: 2em;
+  font-size: 20pt;
+  overflow: hidden;
 }
 .optA {
   background-color: #9FBACE;
@@ -64,6 +64,11 @@ h2  {
 
 .postGame {
   display: none;
+}
+
+.scoreboard {
+  text-align: center;
+  padding: 1em;
 }
 
 #play {

@@ -10,21 +10,28 @@ window.onload = function (){
     var questBank = data;
 
     // start score with 0 from game initiation
-    var score = 0;
+    var playerOneScore = 0;
     // start game with 3 lives
-    var lives = 3;
+    var playerOneLives = 3;
+    // start score with 0 from game initiation
+    var playerTwoScore = 0;
+    // start game with 3 lives
+    var playerTwoLives = 3;
 
-    // function to update score text to current score
+    // function to update score text to current scores
     function updateScore(){
-      $('#score').html(score);
+      $('#playerOneScore').html(playerOneScore);
+      $('#playerTwoScore').html(playerTwoScore);
     }
     updateScore();
 
     // function to update lives text after wrong answers
     function updateLives(){
-      $('#life').html(lives);
+      $('#playerOneLife').html(playerOneLives);
+      $('#playerTwoLife').html(playerTwoLives);
     }
     updateLives();
+
 
   // function to generate numbers for questions, to be called on play click
   function randomGenerator(array, numToReturn){
@@ -80,9 +87,9 @@ window.onload = function (){
 
       // reset colors of answers and result message
       $('.optA').css({backgroundColor: "#9FBACE"});
-      $(this).append($goodAns);
+      // $(this).append($goodAns);
       $('.optB').css({backgroundColor: "#113856"});
-      $(this).append($goodAns);
+      // $(this).append($goodAns);
 
 
       // get correct amount of random questions
@@ -109,65 +116,147 @@ window.onload = function (){
       var $badAns = $( "<p class='message'>Nope. Not even close.</p>" );
       $badAns.css({fontSize: '28pt', marginTop: '2.5em'});
 
-      // on click of zone check if year is smaller
-      $('.optA').click(function(event){
+
+
+      // check for key presses and return player choice functions
+      $(document).keydown(function(e) {
+        if (e.which === 191) {
+          // / pressed
+          console.log('you pressed /');
+          plyTwoZoneB();
+        } else if(e.which === 190) {
+          // . pressed
+          console.log('you pressed .');
+          plyTwoZoneA();
+        } else if(e.which === 90) {
+          // z pressed
+          console.log('you pressed z');
+          plyOneZoneA();
+        } else if(e.which === 88) {
+          // x pressed
+          console.log('you pressed x');
+          plyOneZoneB();
+        }
+      });
+
+      // on z-press check zoneA if year is smaller
+      function plyOneZoneA(event){
         if (questionData[0].Date < questionData[1].Date){
-          score++;
+          playerOneScore++;
           updateScore();
           // save the question data for return later
           correctAnswered.push(questionData[0]);
           // delete question from bank for next round
           questArray.splice(questArray.indexOf(questionIDs[0]), 1);
           // display success visuals and message
-          $(this).css({backgroundColor: "rgb(105, 143, 90)"});
-          $(this).append($goodAns);
+          $('.optA').css({backgroundColor: "rgb(105, 143, 90)"});
+          $('.optA').append($goodAns);
           prepNext();
         } else {
-          lives--;
+          playerOneLives--;
           updateLives();
           // save the question data for return later
           wrongAnswered.push(questionData[0]);
           // display failure visuals and message
-          $(this).css({backgroundColor: "rgb(176, 73, 67)"});
-          $(this).append($badAns);
+          $('.optA').css({backgroundColor: "rgb(176, 73, 67)"});
+          $('.optA').append($badAns);
           prepNext();
           // reset vars and show start over button - refreshes page.
         }
+      }
 
-      });
-      // on click of zone check if year is smaller
-      $('.optB').click(function(event){
+      // on x-press check zoneB if year is smaller
+      function plyOneZoneB (event){
         if (questionData[1].Date < questionData[0].Date){
-          score++;
+          playerOneScore++;
           updateScore();
           // save the question data for return later
           correctAnswered.push(questionData[1]);
           // delete question from bank for next round
           questArray.splice(questArray.indexOf(questionIDs[1]), 1);
           // display success visuals and message
-          $(this).css({backgroundColor: "rgb(105, 143, 90)"});
-          $(this).append($goodAns);
+          $('.optB').css({backgroundColor: "rgb(105, 143, 90)"});
+          $('.optB').append($goodAns);
           prepNext();
         } else {
-          lives--;
+          playerOneLives--;
           updateLives();
           // save the question data for return later
           wrongAnswered.push(questionData[1]);
           // display failure visuals and message
-          $(this).css({backgroundColor: "rgb(176, 73, 67)"});
-          $(this).append($badAns);
+          $('.optB').css({backgroundColor: "rgb(176, 73, 67)"});
+          $('.optB').append($badAns);
           prepNext();
           // reset vars and show start over button - refreshes page.
           }
+      }
 
-      });
+      // on .-press check zoneA if year is smaller
+      function plyTwoZoneA (event){
+        if (questionData[0].Date < questionData[1].Date){
+          playerTwoScore++;
+          updateScore();
+          // save the question data for return later
+          correctAnswered.push(questionData[0]);
+          // delete question from bank for next round
+          questArray.splice(questArray.indexOf(questionIDs[0]), 1);
+          // display success visuals and message
+          $('.optA').css({backgroundColor: "rgb(105, 143, 90)"});
+          $('.optA').append($goodAns);
+          prepNext();
+        } else {
+          playerTwoLives--;
+          updateLives();
+          // save the question data for return later
+          wrongAnswered.push(questionData[0]);
+          // display failure visuals and message
+          $('.optA').css({backgroundColor: "rgb(176, 73, 67)"});
+          $('.optA').append($badAns);
+          prepNext();
+          // reset vars and show start over button - refreshes page.
+        }
+      }
+
+      // on /-press check zoneB if year is smaller
+      function plyTwoZoneB (event){
+        if (questionData[1].Date < questionData[0].Date){
+          playerTwoScore++;
+          updateScore();
+          // save the question data for return later
+          correctAnswered.push(questionData[1]);
+          // delete question from bank for next round
+          questArray.splice(questArray.indexOf(questionIDs[1]), 1);
+          // display success visuals and message
+          $('.optB').css({backgroundColor: "rgb(105, 143, 90)"});
+          $('.optB').append($goodAns);
+          prepNext();
+        } else {
+          playerTwoLives--;
+          updateLives();
+          // save the question data for return later
+          wrongAnswered.push(questionData[1]);
+          // display failure visuals and message
+          $('.optB').css({backgroundColor: "rgb(176, 73, 67)"});
+          $('.optB').append($badAns);
+          prepNext();
+          // reset vars and show start over button - refreshes page.
+          }
+      }
+
       // after question is answered prep next question or lose
       function prepNext (){
-        if (lives === 0){
-          console.log('you lose');
+        // check if either player has lost
+        if (playerOneLives === 0){
+          console.log('Player One, you lose');
+        } else if (playerTwoLives === 0){
+          console.log('Player Two, you lose');
+        // check if either player has won
+        } else if (playerOneScore === win) {
+          console.log('Player One, you win!');
+        } else if (playerTwoScore === win) {
+          console.log('Player Two, you win!');
         } else {
-          $('.optA').off('click');
-          $('.optB').off('click');
+          $(document).off('keydown');
           $('.optA').off('mouseenter mouseleave');
           $('.optB').off('mouseenter mouseleave');
           $('.optA').css({cursor: 'default', opacity: '1'});
