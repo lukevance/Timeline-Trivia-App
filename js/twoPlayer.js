@@ -88,10 +88,8 @@ window.onload = function (){
         function updateText() {
           if (count > -1) {
             $('#time').html(count);
-            console.log(count);
             count--;
           } else {
-            console.log('You Lose');
             stopTimer();
             outOfTime();
           }
@@ -162,7 +160,7 @@ window.onload = function (){
 
       // get correct amount of random questions
       var questionIDs = randomGenerator(questArray, 2);
-      console.log(questionIDs);
+      // console.log(questionIDs);
       // create storage for current question Data
       var questionData = [];
       // get question info from random questions
@@ -174,9 +172,9 @@ window.onload = function (){
 
       // fill zones with event data from question data
       $('.optA').html(questionData[0].Event);
-      console.log(questionData[0]);
+      // console.log(questionData[0]);
       $('.optB').html(questionData[1].Event);
-      console.log(questionData[1]);
+      // console.log(questionData[1]);
 
       // create messages to be displayed
       var $goodAns = $( "<p class='message'>Nice Job!</p>" );
@@ -190,19 +188,19 @@ window.onload = function (){
       $(document).keydown(function(e) {
         if (e.which === 191) {
           // / pressed
-          console.log('you pressed /');
+          // console.log('you pressed /');
           plyTwoZoneB();
         } else if(e.which === 190) {
           // . pressed
-          console.log('you pressed .');
+          // console.log('you pressed .');
           plyTwoZoneA();
         } else if(e.which === 90) {
           // z pressed
-          console.log('you pressed z');
+          // console.log('you pressed z');
           plyOneZoneA();
         } else if(e.which === 88) {
           // x pressed
-          console.log('you pressed x');
+          // console.log('you pressed x');
           plyOneZoneB();
         }
       });
@@ -349,12 +347,14 @@ window.onload = function (){
           console.log('Player One, you win!');
           winner = 'Player One';
           finalScore = playerOneScore + ' - ' + playerTwoScore;
-          gameOver(winner, finalScore);
+          notes = '';
+          gameOver(winner, finalScore, notes);
         } else if (playerTwoScore === win) {
           console.log('Player Two, you win!');
           winner = 'Player Two';
+          notes = '';
           finalScore = playerTwoScore + ' - ' + playerOneScore;
-          gameOver(winner, finalScore);
+          gameOver(winner, finalScore, notes);
           // if game is not over, setup next question
         } else {
           $(document).off('keydown');
@@ -390,4 +390,5 @@ window.onload = function (){
 
     });
   });
+
 };

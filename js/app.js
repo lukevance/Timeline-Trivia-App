@@ -13,6 +13,8 @@ window.onload = function (){
     var score = 0;
     // start game with 3 lives
     var lives = 3;
+    // start game at level 1
+    var level = 1;
 
     // function to update score text to current score
     function updateScore(){
@@ -27,13 +29,18 @@ window.onload = function (){
     updateLives();
 
   // function to generate numbers for questions, to be called on play click
-  function randomGenerator(array, numToReturn){
+  function randomGenerator(array, numToReturn, level){
     var bank = array;
     // return random numbers for requested amount
     var count = 0;
     var results = [];
 
+    // adds random events to results array for specified amnt
     while (count < numToReturn) {
+      // if second number, set max and min to within set amt
+      if (count === 1){
+
+      } else {
       // set max equal to last position of array entered
       var max = (bank.length -1);
       var rando = (Math.random() * (max - 0)).toFixed();
@@ -78,10 +85,8 @@ window.onload = function (){
         function updateText() {
           if (count > -1) {
             $('#time').html(count);
-            console.log(count);
             count--;
           } else {
-            console.log('You Lose');
             stopTimer();
             outOfTime();
           }
@@ -154,9 +159,8 @@ window.onload = function (){
       $('.postGame').css({display: 'none'});
 
 
-      // get correct amount of random questions
+      // get correct amount of random questions, questions left per game
       var questionIDs = randomGenerator(questArray, 2);
-      console.log(questionIDs);
       // create storage for current question Data
       var questionData = [];
       // get question info from random questions
@@ -166,9 +170,9 @@ window.onload = function (){
 
       // fill zones with event data from question data
       $('.optA').html(questionData[0].Event);
-      console.log(questionData[0]);
+      // console.log(questionData[0]);
       $('.optB').html(questionData[1].Event);
-      console.log(questionData[1]);
+      // console.log(questionData[1]);
 
       // create messages to be displayed
       var $goodAns = $( "<p class='message'>Nice Job!</p>" );
