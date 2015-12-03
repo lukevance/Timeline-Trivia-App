@@ -37,13 +37,29 @@ window.onload = function (){
 
     // adds random events to results array for specified amnt
     while (count < numToReturn) {
+      var max;
+      var min;
+      var rando;
       // if second number, set max and min to within set amt
       if (count === 1){
+        // ------change this function to include a min --------
+        // set max equal to last chosen number + level increase allowed
+        max = (bank.length -1);
+        // set min equal to last chosen number - level increase allowed
+        min = 0;
+        // choose random number within given range
+        rando = (Math.random() * (max - 0)).toFixed();
+        // add first num from bank to results
+        results.push(bank[rando]);
+        // remove that option from bank
+        bank.splice(bank.indexOf(bank[rando]), 1);
+        count++;
 
       } else {
       // set max equal to last position of array entered
-      var max = (bank.length -1);
-      var rando = (Math.random() * (max - 0)).toFixed();
+      max = (bank.length -1);
+      min = 0;
+      rando = (Math.random() * (max - 0)).toFixed();
       // add first num from bank to results
       results.push(bank[rando]);
       // remove that option from bank
@@ -282,4 +298,5 @@ window.onload = function (){
 
     });
   });
+});
 };
